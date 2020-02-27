@@ -81,7 +81,7 @@ public interface CheckAction {
         @Setter(AccessLevel.NONE)
         private ArrayList<String> xsltSelectionResults = new ArrayList<>();
 
-        private String xsltTransformationTarget;
+        private String xsltTransformationTarget = null;
 
         //TODO Add result for xslt chain to save
 

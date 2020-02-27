@@ -11,6 +11,6 @@ public class XSLTransformAction implements CheckAction {
 
     @Override
     public boolean isSkipped(Bag results) {
-        return false;
+        return results.getXsltTransformationTarget() == null;
     }
 }
