@@ -26,4 +26,27 @@ class XSLTSelectionActionTest extends Specification {
         and: "transformation files should contain the given"
         bag.getXsltSelectionResults() == transformationFiles
     }
+
+    def "should ignore invalid files"() {
+        given: "A configuration with an invalid file"
+        def inputFile = 'Z:\\awfawf\\awdawdadawd\\awd.xml'
+        def transformationFile = 'Z:\\awfawf\\awdawdadawd\\awd.xsl'
+        ArrayList<String> transformationFiles = new ArrayList<>()
+        transformationFiles.add(transformationFile)
+        TransformationConfiguration transformationConfiguration =
+                new TransformationConfiguration(inputFile, transformationFiles)
+
+        and: "a Selector"
+        def xsltSelectionAction = new XSLTSelectionAction(transformationConfiguration)
+        and: "a bag"
+        def bag = new CheckAction.Bag()
+
+        when: "the check is performed"
+        xsltSelectionAction.check(bag)
+
+        then: "transformation target should be in the bag"
+        bag.getXsltTransformationTarget() == null
+        and: "transformation files should contain the given"
+        bag.getXsltSelectionResults().empty
+    }
 }

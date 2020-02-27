@@ -20,8 +20,6 @@ public class XSLTSelectionAction implements CheckAction {
                 results.getXsltSelectionResults().add(fileURI);
             }
         });
-        //TODO Check wether files are present.
-        //TODO DO NOT PRELOAD!
     }
 
     @Override
@@ -31,7 +29,6 @@ public class XSLTSelectionAction implements CheckAction {
 
     private boolean fileExists(String URI) {
         File checkFile = new File(URI);
-        System.out.println(checkFile.getPath());
         return checkFile.exists();
     }
 }
