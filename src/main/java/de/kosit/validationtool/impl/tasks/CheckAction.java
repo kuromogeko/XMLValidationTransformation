@@ -31,6 +31,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.sf.saxon.s9api.XdmNode;
 
+import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -82,6 +83,7 @@ public interface CheckAction {
         private ArrayList<String> xsltSelectionResults = new ArrayList<>();
 
         private String xsltTransformationTarget = null;
+        private Source xsltTransformationResult = null;
 
         //TODO Add result for xslt chain to save
 

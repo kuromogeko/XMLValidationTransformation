@@ -17,7 +17,7 @@ class XSLTransformActionTest extends Specification {
         skipped == true
     }
 
-    def "it doesnt skip when there is  base file"() {
+    def "it doesn't skip when there is  base file"() {
         given: "a bag with a target file"
         def bag = new CheckAction.Bag()
         bag.setXsltTransformationTarget('Whatever')
@@ -27,7 +27,11 @@ class XSLTransformActionTest extends Specification {
         when: "a check on skip state is performed"
         def skipped = transformer.isSkipped(bag)
 
-        then: "it shouldnt skip"
+        then: "it shouldn't skip"
         skipped == false
+    }
+
+    def ""(){
+
     }
 }
