@@ -14,7 +14,6 @@ public class XSLTransformAction implements CheckAction {
         //TODO Make Transformation chain
         Source editFile = new StreamSource(new File(results.getXsltTransformationTarget()));
         Processor proc = new Processor(false);
-        Serializer resultSerializer = proc.newSerializer(new File(results.getXsltTransformationTarget()));
         XsltCompiler compiler = proc.newXsltCompiler();
 
         for (String filePath : results.getXsltSelectionResults()) {

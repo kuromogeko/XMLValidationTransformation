@@ -12,5 +12,7 @@ public class TransformationConfiguration {
     @Setter(AccessLevel.NONE)
     private String transformationTargetURI;
 
+    private String targetFilePath;
+
     private ArrayList<String> xsltFileLocationURIS;
 }

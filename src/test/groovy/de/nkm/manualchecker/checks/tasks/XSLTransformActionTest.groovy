@@ -31,7 +31,19 @@ class XSLTransformActionTest extends Specification {
         skipped == false
     }
 
-    def ""(){
+    def "it should deliver some type of result"() {
+        given: "a bag with a base file"
+        def bag = new CheckAction.Bag()
+        bag.setXsltTransformationTarget(getClass().getResource('/examples/simple/input/foo.xml').getPath())
+        and: "a transformation"
+        bag.getXsltSelectionResults().add(getClass().getResource('/examples/simple/repository/random-thing.xsl').getPath())
+        and: "a Transformer"
+        def transformer = new XSLTransformAction()
 
+        when: "a transformation is attempted"
+        transformer.check(bag)
+
+        then: "???"
+        bag.getXsltTransformationResult() != null
     }
 }
