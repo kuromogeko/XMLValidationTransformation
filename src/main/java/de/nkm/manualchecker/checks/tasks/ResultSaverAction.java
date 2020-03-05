@@ -11,7 +11,7 @@ import net.sf.saxon.s9api.XdmNode;
 import java.io.File;
 
 @AllArgsConstructor
-public class SourceSaverAction implements CheckAction {
+public class ResultSaverAction implements CheckAction {
 
     private TransformationConfiguration transformationConfiguration;
 
@@ -22,7 +22,6 @@ public class SourceSaverAction implements CheckAction {
                 .newSerializer(new File(transformationConfiguration.getTargetFilePath()));
         try {
             serializer.serializeNode(finishedNode);
-
         } catch (SaxonApiException e) {
             e.printStackTrace();
         }
@@ -30,6 +29,7 @@ public class SourceSaverAction implements CheckAction {
 
     @Override
     public boolean isSkipped(Bag results) {
-        return false;
+        return (results.getXsltTransformationResult() == null
+                || transformationConfiguration.getTargetFilePath() == null);
     }
 }
