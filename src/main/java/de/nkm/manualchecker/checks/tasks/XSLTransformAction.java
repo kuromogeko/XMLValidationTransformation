@@ -15,7 +15,7 @@ public class XSLTransformAction implements CheckAction {
         Source editFile = new StreamSource(new File(results.getXsltTransformationTarget()));
         Processor proc = new Processor(false);
         XsltCompiler compiler = proc.newXsltCompiler();
-
+        XdmNode xdmNode = null;
         for (String filePath : results.getXsltSelectionResults()) {
             StreamSource source = new StreamSource(new File(filePath));
             try {
@@ -25,13 +25,13 @@ public class XSLTransformAction implements CheckAction {
                 transformer.setSource(editFile);
                 transformer.setDestination(destination);
                 transformer.transform();
-                XdmNode xdmNode = destination.getXdmNode();
+                xdmNode = destination.getXdmNode();
                 editFile = xdmNode.asSource();
             } catch (SaxonApiException e) {
                 e.printStackTrace();
             }
         }
-        results.setXsltTransformationResult(editFile);
+        results.setXsltTransformationResult(xdmNode);
     }
 
     @Override
