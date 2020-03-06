@@ -12,7 +12,9 @@ class XSLTSelectionActionTest extends Specification {
         ArrayList<String> transformationFiles = new ArrayList<>()
         transformationFiles.add(transformationFile)
         TransformationConfiguration transformationConfiguration =
-                new TransformationConfiguration(inputFile, transformationFiles)
+                new TransformationConfiguration(inputFile, '', transformationFiles)
+
+        transformationConfiguration.getTransformationTargetURI()
         and: "a Selector"
         def xsltSelectionAction = new XSLTSelectionAction(transformationConfiguration)
         and: "a bag"
@@ -34,7 +36,7 @@ class XSLTSelectionActionTest extends Specification {
         ArrayList<String> transformationFiles = new ArrayList<>()
         transformationFiles.add(transformationFile)
         TransformationConfiguration transformationConfiguration =
-                new TransformationConfiguration(inputFile, transformationFiles)
+                new TransformationConfiguration(inputFile, '', transformationFiles)
 
         and: "a Selector"
         def xsltSelectionAction = new XSLTSelectionAction(transformationConfiguration)

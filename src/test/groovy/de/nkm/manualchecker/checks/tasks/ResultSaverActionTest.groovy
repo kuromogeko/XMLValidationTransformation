@@ -54,7 +54,7 @@ class ResultSaverActionTest extends Specification {
         def skipped = resultSaver.isSkipped(bag)
 
         then: "The action will be skipped"
-        skipped == true
+        skipped
     }
 
     def "it should skip if no result exists but a location to save to"(){
@@ -72,6 +72,6 @@ class ResultSaverActionTest extends Specification {
         def skipped = resultSaver.isSkipped(bag)
 
         then: "The action will be skipped"
-        skipped == true
+        skipped
     }
 }
